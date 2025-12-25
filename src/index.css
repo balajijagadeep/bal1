@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family:
+        source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+@layer base {
+    :root {
+        /* Core Colors - Fitness Dark Theme with Neon Accents */
+        --background: 0 0% 0%;  /* Pure black */
+        --foreground: 0 0% 98%;  /* Almost white */
+        
+        --card: 0 0% 7%;  /* Very dark gray for cards */
+        --card-foreground: 0 0% 98%;
+        
+        --popover: 0 0% 7%;
+        --popover-foreground: 0 0% 98%;
+        
+        /* Neon Green Primary */
+        --primary: 120 100% 50%;  /* Bright neon green #00FF00 */
+        --primary-foreground: 0 0% 0%;
+        --primary-glow: 120 100% 40%;
+        
+        /* Vibrant Red Accent */
+        --accent: 0 100% 60%;  /* Bright red #FF1744 */
+        --accent-foreground: 0 0% 98%;
+        
+        /* Secondary - Dark surface */
+        --secondary: 0 0% 10%;
+        --secondary-foreground: 0 0% 98%;
+        
+        --muted: 0 0% 14%;
+        --muted-foreground: 0 0% 65%;
+        
+        --destructive: 0 100% 60%;
+        --destructive-foreground: 0 0% 98%;
+        
+        --border: 0 0% 20%;
+        --input: 0 0% 20%;
+        --ring: 120 100% 50%;
+        
+        --radius: 0.75rem;
+        
+        /* Custom Fitness Tokens */
+        --neon-green: 120 100% 50%;
+        --neon-green-dim: 120 100% 40%;
+        --red-intense: 0 100% 60%;
+        --surface-dark: 0 0% 7%;
+        --surface-darker: 0 0% 4%;
+        
+        /* Gradients */
+        --gradient-primary: linear-gradient(135deg, hsl(120 100% 40%), hsl(120 100% 50%));
+        --gradient-accent: linear-gradient(135deg, hsl(0 100% 50%), hsl(0 100% 60%));
+        --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%), hsl(0 0% 7%));
+        --gradient-hero: linear-gradient(135deg, hsl(0 0% 0%) 0%, hsl(0 0% 7%) 50%, hsl(0 0% 0%) 100%);
+        
+        /* Shadows */
+        --shadow-glow-green: 0 0 40px hsla(120, 100%, 50%, 0.3);
+        --shadow-glow-red: 0 0 40px hsla(0, 100%, 60%, 0.3);
+        --shadow-card: 0 10px 30px -10px hsla(0, 0%, 0%, 0.5);
+        --shadow-intense: 0 20px 60px -15px hsla(120, 100%, 50%, 0.4);
+        
+        /* Transitions */
+        --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Bebas Neue', 'Inter', sans-serif;
+        letter-spacing: 0.02em;
+    }
+}
+
+/* Custom Animations */
+@layer utilities {
+    .animate-glow-green {
+        animation: glow-green 2s ease-in-out infinite alternate;
+    }
+    
+    .animate-glow-red {
+        animation: glow-red 2s ease-in-out infinite alternate;
+    }
+    
+    .animate-pulse-slow {
+        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    @keyframes glow-green {
+        from {
+            text-shadow: 0 0 10px hsla(120, 100%, 50%, 0.5),
+                         0 0 20px hsla(120, 100%, 50%, 0.3),
+                         0 0 30px hsla(120, 100%, 50%, 0.2);
+        }
+        to {
+            text-shadow: 0 0 20px hsla(120, 100%, 50%, 0.8),
+                         0 0 30px hsla(120, 100%, 50%, 0.5),
+                         0 0 40px hsla(120, 100%, 50%, 0.3);
+        }
+    }
+    
+    @keyframes glow-red {
+        from {
+            text-shadow: 0 0 10px hsla(0, 100%, 60%, 0.5),
+                         0 0 20px hsla(0, 100%, 60%, 0.3);
+        }
+        to {
+            text-shadow: 0 0 20px hsla(0, 100%, 60%, 0.8),
+                         0 0 30px hsla(0, 100%, 60%, 0.5);
+        }
+    }
+    
+    .text-gradient-green {
+        background: linear-gradient(135deg, hsl(120 100% 50%), hsl(120 100% 70%));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .text-gradient-red {
+        background: linear-gradient(135deg, hsl(0 100% 60%), hsl(0 100% 70%));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
